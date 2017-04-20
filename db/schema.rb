@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170413083148) do
+ActiveRecord::Schema.define(:version => 20170420075754) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -899,6 +899,18 @@ ActiveRecord::Schema.define(:version => 20170413083148) do
     t.string  "abbr"
     t.integer "country_id"
   end
+
+  create_table "spree_stock_items", :force => true do |t|
+    t.integer  "stock_location_id"
+    t.integer  "variant_id"
+    t.integer  "count_on_hand"
+    t.integer  "lock_version"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "spree_stock_items", ["stock_location_id", "variant_id"], :name => "index_spree_stock_items_on_stock_location_id_and_variant_id"
+  add_index "spree_stock_items", ["stock_location_id"], :name => "index_spree_stock_items_on_stock_location_id"
 
   create_table "spree_tax_categories", :force => true do |t|
     t.string   "name"
