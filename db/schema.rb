@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075765) do
+ActiveRecord::Schema.define(:version => 20170420075766) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -936,12 +936,17 @@ ActiveRecord::Schema.define(:version => 20170420075765) do
 
   create_table "spree_stock_locations", :force => true do |t|
     t.string   "name"
-    t.integer  "address_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "state_name"
+    t.integer  "country_id"
+    t.string   "zipcode"
+    t.string   "phone"
   end
-
-  add_index "spree_stock_locations", ["address_id"], :name => "index_spree_stock_locations_on_address_id"
 
   create_table "spree_stock_movements", :force => true do |t|
     t.integer  "stock_item_id"
