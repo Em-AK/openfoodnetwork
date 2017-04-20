@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075762) do
+ActiveRecord::Schema.define(:version => 20170420075763) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -885,6 +885,17 @@ ActiveRecord::Schema.define(:version => 20170420075762) do
     t.text     "description"
     t.string   "tracking_url"
   end
+
+  create_table "spree_shipping_rates", :force => true do |t|
+    t.integer  "shipment_id"
+    t.integer  "shipping_method_id"
+    t.boolean  "selected",                                         :default => false
+    t.decimal  "cost",               :precision => 8, :scale => 2
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+  end
+
+  add_index "spree_shipping_rates", ["shipment_id", "shipping_method_id"], :name => "spree_shipping_rates_join_index", :unique => true
 
   create_table "spree_skrill_transactions", :force => true do |t|
     t.string   "email"
