@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075758) do
+ActiveRecord::Schema.define(:version => 20170420075759) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -730,7 +730,6 @@ ActiveRecord::Schema.define(:version => 20170420075758) do
     t.integer  "supplier_id"
     t.boolean  "group_buy"
     t.float    "group_buy_unit_size"
-    t.boolean  "on_demand",            :default => false
     t.string   "variant_unit"
     t.float    "variant_unit_scale"
     t.string   "variant_unit_name"
@@ -1037,7 +1036,6 @@ ActiveRecord::Schema.define(:version => 20170420075758) do
     t.decimal  "cost_price",       :precision => 8, :scale => 2
     t.integer  "position"
     t.integer  "lock_version",                                   :default => 0
-    t.boolean  "on_demand",                                      :default => false
     t.string   "cost_currency"
     t.float    "unit_value"
     t.string   "unit_description",                               :default => ""
