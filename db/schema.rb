@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075757) do
+ActiveRecord::Schema.define(:version => 20170420075758) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -491,6 +491,7 @@ ActiveRecord::Schema.define(:version => 20170420075757) do
     t.datetime "updated_at",                             :null => false
     t.integer  "shipment_id"
     t.integer  "return_authorization_id"
+    t.boolean  "pending",                 :default => true
   end
 
   add_index "spree_inventory_units", ["order_id"], :name => "index_inventory_units_on_order_id"
