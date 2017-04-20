@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075755) do
+ActiveRecord::Schema.define(:version => 20170420075756) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -1032,7 +1032,6 @@ ActiveRecord::Schema.define(:version => 20170420075755) do
     t.datetime "deleted_at"
     t.boolean  "is_master",                                      :default => false
     t.integer  "product_id"
-    t.integer  "count_on_hand",                                  :default => 0
     t.decimal  "cost_price",       :precision => 8, :scale => 2
     t.integer  "position"
     t.integer  "lock_version",                                   :default => 0
