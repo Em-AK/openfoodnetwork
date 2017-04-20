@@ -330,7 +330,7 @@ FactoryGirl.modify do
 
     supplier { Enterprise.is_primary_producer.first || FactoryGirl.create(:supplier_enterprise) }
     primary_taxon { Spree::Taxon.first || FactoryGirl.create(:taxon) }
-    on_hand 3
+    # on_hand 3
 
     unit_value 1
     unit_description ''
