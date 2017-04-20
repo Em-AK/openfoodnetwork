@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075763) do
+ActiveRecord::Schema.define(:version => 20170420075764) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -877,9 +877,6 @@ ActiveRecord::Schema.define(:version => 20170420075763) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "display_on"
-    t.boolean  "match_none"
-    t.boolean  "match_all"
-    t.boolean  "match_one"
     t.datetime "deleted_at"
     t.boolean  "require_ship_address", :default => true
     t.text     "description"
