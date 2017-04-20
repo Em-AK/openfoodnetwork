@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075767) do
+ActiveRecord::Schema.define(:version => 20170420100644) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -929,6 +929,7 @@ ActiveRecord::Schema.define(:version => 20170420075767) do
     t.integer  "lock_version"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.boolean  "backorderable",     :default => true
   end
 
   add_index "spree_stock_items", ["stock_location_id", "variant_id"], :name => "index_spree_stock_items_on_stock_location_id_and_variant_id"
