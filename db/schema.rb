@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075766) do
+ActiveRecord::Schema.define(:version => 20170420075767) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -946,6 +946,7 @@ ActiveRecord::Schema.define(:version => 20170420075766) do
     t.integer  "country_id"
     t.string   "zipcode"
     t.string   "phone"
+    t.boolean  "active"
   end
 
   create_table "spree_stock_movements", :force => true do |t|
