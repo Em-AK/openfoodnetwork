@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420075760) do
+ActiveRecord::Schema.define(:version => 20170420075761) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -867,7 +867,6 @@ ActiveRecord::Schema.define(:version => 20170420075760) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "display_on"
-    t.integer  "shipping_category_id"
     t.boolean  "match_none"
     t.boolean  "match_all"
     t.boolean  "match_one"
@@ -1260,8 +1259,6 @@ ActiveRecord::Schema.define(:version => 20170420075760) do
 
   add_foreign_key "spree_shipments", "spree_addresses", name: "spree_shipments_address_id_fk", column: "address_id"
   add_foreign_key "spree_shipments", "spree_orders", name: "spree_shipments_order_id_fk", column: "order_id"
-
-  add_foreign_key "spree_shipping_methods", "spree_shipping_categories", name: "spree_shipping_methods_shipping_category_id_fk", column: "shipping_category_id"
 
   add_foreign_key "spree_state_changes", "spree_users", name: "spree_state_changes_user_id_fk", column: "user_id"
 
