@@ -9,14 +9,15 @@ gem 'i18n', '~> 0.6.11'
 gem 'nokogiri', '>= 1.6.7.1'
 
 gem 'pg'
-gem 'spree', github: 'coopdevs/spree', branch: 'spree-upgrade-step-6'
-gem 'spree_i18n', github: 'spree/spree_i18n', branch: '1-3-stable'
-gem 'spree_auth_devise', github: 'openfoodfoundation/spree_auth_devise', branch: 'spree-upgrade-intermediate'
+gem 'spree', github: 'spree/spree', branch: '2-0-stable'
+gem 'spree_i18n', github: 'coopdevs/spree_i18n', branch: 'globalize3'
+gem 'spree_auth_devise', github: 'openfoodfoundation/spree_auth_devise', branch: '2-0-stable'
 
+gem 'globalize3', github: 'Em-AK/globalize', branch: 'globalize3'
 # Our branch contains two changes
 # - Pass customer email and phone number to PayPal (merged to upstream master)
 # - Change type of password from string to password to hide it in the form
-gem 'spree_paypal_express', :github => "openfoodfoundation/better_spree_paypal_express", :branch => "spree-upgrade-intermediate"
+gem 'spree_paypal_express', :github => "openfoodfoundation/better_spree_paypal_express", :branch => "2-0-stable"
 #gem 'spree_paypal_express', :github => "spree-contrib/better_spree_paypal_express", :branch => "1-3-stable"
 
 gem 'delayed_job_active_record'
@@ -42,8 +43,7 @@ gem 'representative_view'
 gem 'rabl'
 gem "active_model_serializers"
 gem 'oj'
-gem 'deface', :github => 'spree/deface', :ref => '1110a13'
-gem 'paperclip'
+gem 'deface', github: 'spree/deface', tag: '1.0.0'
 gem 'dalli'
 gem 'geocoder'
 gem 'gmaps4rails'

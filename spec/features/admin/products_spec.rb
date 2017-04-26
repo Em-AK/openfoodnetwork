@@ -87,7 +87,7 @@ feature %q{
     end
 
     scenario "making a product into a group buy product" do
-      product = create(:simple_product, name: 'group buy product')
+      product = create(:base_product, name: 'group buy product')
 
       login_to_admin_section
 
@@ -123,7 +123,7 @@ feature %q{
 
     context "additional fields" do
       it "should have a notes field" do
-        product = create(:simple_product, supplier: @supplier2)
+        product = create(:base_product, supplier: @supplier2)
         visit spree.edit_admin_product_path product
         page.should have_content "Notes"
       end
@@ -160,7 +160,7 @@ feature %q{
     end
 
     scenario "editing a product" do
-      product = create(:simple_product, name: 'a product', supplier: @supplier2)
+      product = create(:base_product, name: 'a product', supplier: @supplier2)
 
       visit spree.edit_admin_product_path product
 
@@ -174,7 +174,7 @@ feature %q{
     end
 
     scenario "editing product distributions" do
-      product = create(:simple_product, supplier: @supplier2)
+      product = create(:base_product, supplier: @supplier2)
 
       visit spree.edit_admin_product_path product
       within('#sidebar') { click_link 'Product Distributions' }
@@ -197,7 +197,7 @@ feature %q{
 
     scenario "deleting product properties", js: true do
       # Given a product with a property
-      p = create(:simple_product, supplier: @supplier2)
+      p = create(:base_product, supplier: @supplier2)
       p.set_property('fooprop', 'fooval')
 
       # When I navigate to the product properties page
@@ -217,7 +217,7 @@ feature %q{
 
 
     scenario "deleting product images", js: true do
-      product = create(:simple_product, supplier: @supplier2)
+      product = create(:base_product, supplier: @supplier2)
       image = File.open(File.expand_path('../../../../app/assets/images/logo-white.png', __FILE__))
       Spree::Image.create({:viewable_id => product.master.id, :viewable_type => 'Spree::Variant', :alt => "position 1", :attachment => image, :position => 1})
 
