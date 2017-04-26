@@ -12,7 +12,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
     let(:supplier) { create(:supplier_enterprise) }
     let(:oc1) { create(:simple_order_cycle, distributors: [distributor], coordinator: create(:distributor_enterprise), orders_close_at: 2.days.from_now) }
     let(:oc2) { create(:simple_order_cycle, distributors: [distributor], coordinator: create(:distributor_enterprise), orders_close_at: 3.days.from_now) }
-    let(:product) { create(:simple_product, supplier: supplier) }
+    let(:product) { create(:base_product, supplier: supplier) }
     let(:variant) { product.variants.first }
     let(:order) { create(:order, distributor: distributor) }
 
@@ -143,7 +143,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
     describe "after selecting an order cycle with products visible" do
       let(:variant1) { create(:variant, product: product, price: 20) }
       let(:variant2) { create(:variant, product: product, price: 30, display_name: "Badgers") }
-      let(:product2) { create(:simple_product, supplier: supplier, name: "Meercats") }
+      let(:product2) { create(:base_product, supplier: supplier, name: "Meercats") }
       let(:variant3) { create(:variant, product: product2, price: 40, display_name: "Ferrets") }
       let(:exchange) { Exchange.find(oc1.exchanges.to_enterprises(distributor).outgoing.first.id) }
 
@@ -207,9 +207,9 @@ feature "As a consumer I want to shop with a distributor", js: true do
 
     describe "group buy products" do
       let(:exchange) { Exchange.find(oc1.exchanges.to_enterprises(distributor).outgoing.first.id) }
-      let(:product) { create(:simple_product, group_buy: true, on_hand: 15) }
+      let(:product) { create(:base_product, group_buy: true, on_hand: 15) }
       let(:variant) { product.variants.first }
-      let(:product2) { create(:simple_product, group_buy: false) }
+      let(:product2) { create(:base_product, group_buy: false) }
 
       describe "with variants on the product" do
         let(:variant) { create(:variant, product: product, on_hand: 10 ) }
@@ -245,7 +245,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
 
     describe "adding and removing products from cart" do
       let(:exchange) { Exchange.find(oc1.exchanges.to_enterprises(distributor).outgoing.first.id) }
-      let(:product) { create(:simple_product) }
+      let(:product) { create(:base_product) }
       let(:variant) { create(:variant, product: product) }
       let(:variant2) { create(:variant, product: product) }
 
@@ -310,7 +310,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
         end
 
         context "group buy products" do
-          let(:product) { create(:simple_product, group_buy: true) }
+          let(:product) { create(:base_product, group_buy: true) }
 
           it "does the same" do
             # -- Place in cart so we can set max_quantity, then make out of stock
@@ -355,7 +355,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
           end
 
           context "group buy products" do
-            let(:product) { create(:simple_product, group_buy: true) }
+            let(:product) { create(:base_product, group_buy: true) }
 
             it "does not update max_quantity" do
               fill_in "variants[#{variant.id}]", with: '2'
@@ -398,7 +398,7 @@ feature "As a consumer I want to shop with a distributor", js: true do
 
     context "when shopping requires a customer" do
       let(:exchange) { Exchange.find(oc1.exchanges.to_enterprises(distributor).outgoing.first.id) }
-      let(:product) { create(:simple_product) }
+      let(:product) { create(:base_product) }
       let(:variant) { create(:variant, product: product) }
 
       before do
