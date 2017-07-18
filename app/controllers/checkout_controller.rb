@@ -42,6 +42,7 @@ class CheckoutController < Spree::CheckoutController
         set_default_ship_address
 
         ResetOrderService.new(self).call
+        session[:access_token] = current_order.token
 
         flash[:success] = t(:order_processed_successfully)
         respond_to do |format|
@@ -60,6 +61,10 @@ class CheckoutController < Spree::CheckoutController
     end
   end
 
+  def expire_current_order
+    session[:order_id] = nil
+    @current_order = nil
+  end
 
   private
 
