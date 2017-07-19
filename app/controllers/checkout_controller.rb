@@ -39,6 +39,9 @@ class CheckoutController < Spree::CheckoutController
         set_default_bill_address
         set_default_ship_address
 
+        ResetOrderService.new(self, current_order).call
+        session[:access_token] = current_order.token
+
         flash[:success] = t(:order_processed_successfully)
         respond_to do |format|
           format.html do
@@ -56,6 +59,13 @@ class CheckoutController < Spree::CheckoutController
     end
   end
 
+  # Clears the cached order. Required for #current_order to return a new order
+  # to serve as cart. See https://github.com/spree/spree/blob/1-3-stable/core/lib/spree/core/controller_helpers/order.rb#L14
+  # for details.
+  def expire_current_order
+    session[:order_id] = nil
+    @current_order = nil
+  end
 
   private
 
